@@ -2,6 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
+    save: function() {
+      var controller = this.get('controller');
+      var band = controller.get('model');
+
+      return band.save();
+    },
+    
     willTransition: function(transition) {
       var controller = this.get('controller');
       var leave;
