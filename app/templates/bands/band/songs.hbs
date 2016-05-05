@@ -9,8 +9,29 @@
             {{action "createSong"}}>Add</button>
         </form>
       </li>
+      <li class="btn-group song-filter-search-panel" role="group">
+        <div class="sorting-panel">
+          <button type="button" class="btn btn-default sort-rating-desc sorting-button" {{action "setSorting" "ratingDesc"}}>
+            Rating
+            <span = "glyphicon glyphicon-arrow-down"></span>
+          </button>
+          <button type="button" class="btn btn-default sort-rating-asc sorting-button" {{action "setSorting" "ratingAsc"}}>
+            Rating
+            <span class="glyphicon glyphicon-arrow-up"></span>
+          </button>
+          <button type="button" class="btn btn-default sort-title-desc sorting-button" {{action "setSorting" "titleDesc"}}>
+            Title
+            <span class="glyphicon glyphicon-arrow-down"></span>
+          </button>
+          <button type="button" class="btn btn-default sort-title-asc sorting-button" {{action "setSorting" "titleAsc"}}>
+            Title
+            <span class="glyphicon glyphicon-arrow-up"></span>
+          </button>
+        </div>
+        <div class="clearfix"></div>
+      </li>
     {{/if}}
-    {{#each model.songs as |song|}}
+    {{#each sortedSongs as |song|}}
       <li class="list-group-item song">
         {{song.title}}
         {{star-rating item=song rating=song.rating on-click=(action "updateRating")}}
